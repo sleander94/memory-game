@@ -9,6 +9,32 @@ const App = () => {
   const [highScore, setHighScore] = useState(0);
   const [cards, setCards] = useState([]);
 
+  useEffect(() => {
+    setCards(generateCards());
+  }, [score]);
+
+  const generateCards = () => {
+    let deck = [];
+    for (let i = 1; i <= 12; i++) {
+      deck.push(<Card key={i} number={i} registerClick={registerClick}></Card>);
+    }
+    return deck;
+  };
+
+  const registerClick = (e) => {
+    if (e.target.dataset.clicked === 'false') {
+      e.target.dataset.clicked = 'true';
+      setScore(score + 1);
+    } else {
+      setScore(0);
+      let cardElements = document.querySelectorAll('.card');
+      for (let i = 0; i < cardElements.length; i++) {
+        console.log(cardElements[i]);
+        cardElements[i].dataset.clicked = 'false';
+      }
+    }
+  };
+
   return (
     <div className="App">
       <Scoreboard score={score} highScore={highScore}></Scoreboard>
