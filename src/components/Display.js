@@ -15,10 +15,6 @@ const Display = ({ cards }) => {
     return deck;
   };
 
-  const displayCards = (deck) => {
-    return <div>{deck}</div>;
-  };
-
   return <div className="display">{shuffleCards(cards)}</div>;
 };
 
