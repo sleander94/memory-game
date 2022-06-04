@@ -26,10 +26,12 @@ const App = () => {
       e.target.dataset.clicked = 'true';
       setScore(score + 1);
     } else {
+      if (score > highScore) {
+        setHighScore(score);
+      }
       setScore(0);
       let cardElements = document.querySelectorAll('.card');
       for (let i = 0; i < cardElements.length; i++) {
-        console.log(cardElements[i]);
         cardElements[i].dataset.clicked = 'false';
       }
     }
