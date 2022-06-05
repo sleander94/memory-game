@@ -10,6 +10,9 @@ const App = () => {
   const [cards, setCards] = useState([]);
 
   useEffect(() => {
+    if (score === 12) {
+      resetGame();
+    }
     setCards(generateCards());
   }, [score]);
 
